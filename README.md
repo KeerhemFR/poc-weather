@@ -39,7 +39,7 @@ If there is no data in the cache, or the data have expired, then we call the **o
 
 Then fetchWeather() is called each time the coordinates will change.
 
-## WeatherCard
+## WeatherCard.tsx
 
 WeatherCard is a React component which only purpose is to display the informations passed through it.
 
