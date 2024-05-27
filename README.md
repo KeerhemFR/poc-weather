@@ -1,4 +1,4 @@
-#Technical documentaiton
+# Technical documentaiton
 
 # Getting Started with Create React App
 
