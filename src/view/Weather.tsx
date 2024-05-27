@@ -136,5 +136,5 @@ export const Weather: React.FC = React.memo(() => {
     }
   }, [error]);
 
-  return <>{weather && <WeatherCard weather={weather} />}</>;
+  return <>{weather ? <WeatherCard weather={weather} /> : <p>Loading...</p>}</>;
 });
