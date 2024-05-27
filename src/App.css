@@ -1,19 +1,17 @@
+body {
+  background-image: linear-gradient( rgba(255,255,0,.3), rgba(255,0,0,.25) ),url("../public/clouds.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  width: 100%;
+  min-height: 100vh;
 }
 
 .App-header {
+  width: 100%;
   background-color: #282c34;
   display: flex;
   flex-direction: column;
@@ -27,12 +25,95 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weather-card{
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 95%;
+  margin: 10px auto 10px;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
+.main-info{
+  width: 45%;
+  border-right: 2px solid black;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  font-size: 20px;
+}
+
+.main-upper{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-bottom{
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center; 
+}
+
+.space-setter{
+  display:contents;
+}
+
+.img-cont {
+  height: 100px;
+  width: 100px;
+  margin: auto;
+}
+
+.img-cont img {
+  height: 100%;
+  width: 100%;
+}
+
+.detailed-info{
+  width:55%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items:flex-start;
+  padding-left: 40px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 900px) {
+  .weather-card{
+    flex-flow: column wrap;
+  }
+
+  .main-info{
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+  }
+
+  .main-bottom{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .space-setter{
+    display: block;
+  }
+
+  .detailed-info{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0
+  }
+
+  
+}
