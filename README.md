@@ -1,4 +1,47 @@
-# Technical documentaiton
+# Technical documentation
+
+This project is for a technical evaluation.
+The purpose is to call a weather API with limited free requests per day.
+The constraint are to request the weather depending the navigator location, and to store the informations in the cache to reuse them for a limited time, as long as the navigator location doesn't change.
+The app call two components: **Weather**, which handle the logic about the call of the weather data and their storage in the cache, and **WeatherCard**, which will display the data passed by its parent.
+
+## Weather.tsx
+
+The Weather component will store the received data in its **states**, and will handle the two mains function to meet our requirements: **getLocation()** which purpose is to get the navigator current location, and **fetchWeather()**, which purpose is to get the weather informations.
+
+### States
+
+Here are the different states needed for our app to work:
+  - **latitude**: store the navigator current latitude
+  - **longitude**: store the navigator current longitude
+  - **error**: store the error, if there is one, to display in the console.error
+  - **weather**: store the weather informations to pass to the component **WeatherCard**
+
+### getLocation()
+
+The purpose of this function is to confirm that the user enabled the geolocation on their navigator.
+If so, the latitude and longitude will be stored in the states using the method ```navigator.geolocation.getCurrentPosition((position)=>{...```,then  ```position.coords.latitude``` and ```position.coords.longitude``` to get the coordinates.
+If it is not possible to use the geolocation, a switch case will receive the error to display the accurate error message depending the reason forbidding us to use it.
+
+### isCacheExpired()
+
+A simple function receiving the timestamp stored in the cache, and compared to the current timestamp, it tell us if it exceed the lifetime settled previously.
+
+### fetchWeather()
+
+An asynchronous function handling the weather data in differents ways.
+
+It opens on the variable **cachedTimestamp**, **cachedCoords** and **cachedData** which receive the associated data from the cache using ```localStorage.getItem()```.
+If those data exists in the cache, and we can get the coordinates from the navigator.geolocation, we compare the stored coordinates and timestamp with the current ones.
+If the timestamp is not expired and the location is similar, we stock the cached weather data in the state.
+
+If there is no data in the cache, or the data have expired, then we call the **openweathermap API** with the current coordinates, and store the returned data in the cache with ```localStorage.setItem()```
+
+Then fetchWeather() is called each time the coordinates will change.
+
+## WeatherCard
+
+WeatherCard is a React component which only purpose is to display the informations passed through it.
 
 # Getting Started with Create React App
 
